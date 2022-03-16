@@ -27,6 +27,10 @@ GO
 --- Use the incrementation of your choosing for ACId. 
 CREATE TABLE AccountOwner (
 	ACid INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	OwnerName char(100) NOT NULL,
+	OwnerCreationDate date NOT NULL,
+	OwnerStatus INT NOT NULL,
+	PriceChange float NOT NULL, 
 )
 
 GO
