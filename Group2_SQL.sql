@@ -62,6 +62,11 @@ VALUES (1, 'Cory Kennedy', GETDATE(), 1, 0.10),
 (10, 'Victoria Wednz', GETDATE(), 1, 3.60)
 GO
 
+
+INSERT INTO OwnerCoin(ACid, Symbol)
+VALUES (3,'ETHBTC'),(7,'ETHBTC'),(8,'ETHBTC'),(6,'ETHBTC'),(1,'ETHBTC')
+GO
+
 --- Part 5 --- Join the first two tables and get all of the results. No conditional necessary and no grouping necessary.
 SELECT AccountOwner.ACid, AccountOwner.OwnerName, AccountOwner.OwnerStatus, AccountOwner.OwnerCreationDate, Coin.Symbol, Coin.AskPrice, Coin.HighPrice,
 Coin.LowPrice, Coin.PriceChange FROM AccountOwner 
