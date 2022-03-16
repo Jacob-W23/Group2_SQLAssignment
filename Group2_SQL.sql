@@ -63,6 +63,10 @@ VALUES (1, 'Cory Kennedy', GETDATE(), 1, 0.10),
 GO
 
 --- Part 5 --- Join the first two tables and get all of the results. No conditional necessary and no grouping necessary.
+SELECT AccountOwner.ACid, AccountOwner.OwnerName, AccountOwner.OwnerStatus, AccountOwner.OwnerCreationDate, Coin.Symbol, Coin.AskPrice, Coin.HighPrice,
+Coin.LowPrice, Coin.PriceChange FROM AccountOwner 
+INNER JOIN OwnerCoin ON OwnerCoin.ACid = AccountOwner.ACid
+INNER JOIN Coin ON Coin.Symbol = OwnerCoin.Symbol
 
 
 --- Part 6 and 7 will be discussed on Docs and In Video ---
