@@ -30,7 +30,6 @@ CREATE TABLE AccountOwner (
 	OwnerName char(100) NOT NULL,
 	OwnerCreationDate date NOT NULL,
 	OwnerStatus INT NOT NULL,
-	PriceChange float NOT NULL, 
 )
 
 GO
@@ -39,27 +38,26 @@ GO
 CREATE TABLE OwnerCoin (
 	ACid INT NOT NULL,
 	Symbol nvarchar(6) NOT NULL,
-	PRIMARY KEY (ACid, Symbol),
-	FOREIGN KEY (ACid) REFERENCES AccountOwner(ACid),
-	FOREIGN KEY (Symbol) REFERENCES Coin(Symbol)
+	PRIMARY KEY (ACid, Symbol)
 )
 
 GO
 
 --- Part 4 --- The AccountOwner table should have at least ten accounts. The OwnerCoin table should have five linking instances.
 --AccountOwner accounts inserts
-SET IDENTITY_INSERT AccountOwner ON
-INSERT INTO AccountOwner(ACid, OwnerName, OwnerCreationDate, OwnerStatus, PriceChange)
-VALUES (1, 'Cory Kennedy', GETDATE(), 1, 0.10),
-(2, 'Breanna Gearing', GETDATE(), 1, 0.50),
-(3, 'Todd Howard', GETDATE(), 1, 0.60),
-(4, 'Jake Burton', GETDATE(), 1, 0.75),
-(5, 'Andrew Reynolds', GETDATE(), 1, 4.69),
-(6, 'Ellie Jenkins', GETDATE(), 1, 0.55),
-(7, 'Ron Weasley', GETDATE(), 1, 0.88),
-(8, 'Paul Rodrigeuz', GETDATE(), 1, 0.01),
-(9, 'Sarah Nickleson', GETDATE(), 1, 2.11),
-(10, 'Victoria Wednz', GETDATE(), 1, 3.60)
+SET IDENTITY_INSERT AccountOwner OFF
+GO
+INSERT INTO AccountOwner(OwnerName, OwnerCreationDate, OwnerStatus)
+VALUES ('Cory Kennedy', GETDATE(), 1),
+('Breanna Gearing', GETDATE(), 1),
+('Todd Howard', GETDATE(), 1),
+('Jake Burton', GETDATE(), 1),
+('Andrew Reynolds', GETDATE(), 1),
+('Ellie Jenkins', GETDATE(), 1),
+('Ron Weasley', GETDATE(), 1),
+('Paul Rodrigeuz', GETDATE(), 1),
+('Sarah Nickleson', GETDATE(), 1),
+('Victoria Wednz', GETDATE(), 1)
 GO
 
 
@@ -72,6 +70,3 @@ SELECT AccountOwner.ACid, AccountOwner.OwnerName, AccountOwner.OwnerStatus, Acco
 Coin.LowPrice, Coin.PriceChange FROM AccountOwner 
 INNER JOIN OwnerCoin ON OwnerCoin.ACid = AccountOwner.ACid
 INNER JOIN Coin ON Coin.Symbol = OwnerCoin.Symbol
-
-
---- Part 6 and 7 will be discussed on Docs and In Video ---
